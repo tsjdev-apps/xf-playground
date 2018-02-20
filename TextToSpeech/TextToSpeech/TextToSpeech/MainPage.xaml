@@ -4,8 +4,30 @@
              xmlns:local="clr-namespace:TextToSpeech"
              x:Class="TextToSpeech.MainPage">
 
-	<Label Text="Welcome to Xamarin.Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <Grid RowSpacing="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackLayout Spacing="12"
+                     Margin="12">
+            <Entry x:Name="TextToSpeechEntry"
+                   Placeholder="Text To Speech..." />
+            <Button Text="Speak"
+                    Clicked="SpeakButtonOnClicked" />
+        </StackLayout>
+
+        <ListView x:Name="LanguageListView"
+                  ItemTapped="LanguageListViewOnItemTapped"
+                  Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding DisplayName}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
 
 </ContentPage>
