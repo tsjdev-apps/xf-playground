@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TextToSpeech.MainPage">
+
+    <Grid RowSpacing="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.Margin>
+            <OnPlatform x:TypeArguments="Thickness">
+                <On Platform="iOS" Value="0,32,0,0"/>
+            </OnPlatform>
+        </Grid.Margin>
+
+
+        <StackLayout Spacing="12"
+                     Margin="12">
+            <Entry x:Name="TextToSpeechEntry"
+                   Placeholder="Text To Speech..." />
+            <Button Text="Speak"
+                    Clicked="SpeakButtonOnClicked" />
+        </StackLayout>
+
+        <ListView x:Name="LanguageListView"
+                  ItemTapped="LanguageListViewOnItemTapped"
+                  Grid.Row="1">
+            <ListView.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="UWP" Value="12"/>
+                </OnPlatform>
+            </ListView.Margin>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding DisplayName}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+
+</ContentPage>
